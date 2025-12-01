@@ -20,4 +20,6 @@ public class Producto {
     private String categoria;
 
     private Integer stock;
+
+    private String imagenUrl;
 }

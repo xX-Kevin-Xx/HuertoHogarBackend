@@ -16,107 +16,123 @@ public class DataLoader {
     CommandLineRunner initDatabase(
             ProductoRepository repo,
             UsuarioRepository repoUsuario,
-            PasswordEncoder passwordEncoder  // <-- INYECTADO AQUÍ
+            PasswordEncoder passwordEncoder
     ) {
         return args -> {
 
-            // --- PRODUCTOS (SIN CAMBIOS) ---
-            repo.save(new Producto(null,
+            // 🟢 PRODUCTOS
+            crearProducto(repo,
                     "Manzanas Fuji",
-                    "Crujientes y dulces, cultivadas en El Manzano Región de O'Higgins. Perfectas para niños y adultos.",
-                    1200.0,
-                    "Frutas Frescas",
-                    80));
-
-            repo.save(new Producto(null,
-                    "Naranjas Valencia",
-                    "Jugosas y ricas en vitamina C, ideales para hacer jugo o para consumo inmediato.",
-                    1000.0,
-                    "Frutas Frescas",
-                    70));
-
-            repo.save(new Producto(null,
-                    "Plátanos Cavendish",
-                    "Dulces y cremosos, perfectos para postres y batidos. Ideal para deportistas.",
-                    1500.0,
-                    "Frutas Frescas",
-                    90));
-
-            repo.save(new Producto(null,
-                    "Zanahorias Orgánicas",
-                    "Cultivadas sin pesticidas en Melipilla. Excelente fuente de vitamina A y fibra.",
-                    900.0,
-                    "Verduras Orgánicas",
-                    60));
-
-            repo.save(new Producto(null,
-                    "Espinacas Frescas",
-                    "Espinacas frescas ricas en hierro y vitaminas. Perfectas para ensaladas y batidos verdes.",
-                    1100.0,
-                    "Verduras Orgánicas",
-                    50));
-
-            repo.save(new Producto(null,
-                    "Pimientos Tricolores",
-                    "Mezcla de pimientos rojos, amarillos y verdes. Ideales para salteados y ensaladas.",
-                    1800.0,
-                    "Verduras Orgánicas",
-                    0));
-
-            repo.save(new Producto(null,
-                    "Miel Orgánica",
-                    "Miel pura de abejas criadas en entorno natural. Endulzante natural sin procesar.",
-                    3500.0,
-                    "Productos Orgánicos",
-                    40));
-
-            repo.save(new Producto(null,
-                    "Quinua Orgánica",
-                    "Quinua orgánica de alta calidad. Rica en proteínas y perfecta para dietas saludables.",
-                    2800.0,
-                    "Productos Orgánicos",
-                    30));
-
-            repo.save(new Producto(null,
-                    "Leche Entera",
-                    "Leche entera fresca de vacas criadas en praderas naturales. Pasteurizada y nutritiva.",
-                    1200.0,
-                    "Productos Lácteos",
-                    100));
-
-            repo.save(new Producto(null,
-                    "Mantequilla con Sal",
-                    "Mantequilla cremosa con sal, perfecta para pan tostado y cocina.",
-                    2200.0,
-                    "Productos Lácteos",
-                    80));
-
-            System.out.println("✅ Productos precargados en la base de datos de Huerto Hogar");
-
-            // ---- USUARIOS ----
-            Usuario admin = new Usuario(
-                    null,
-                    "Kevin Catalan",
-                    "kevincatalanpinto@gmail.com",
-                    passwordEncoder.encode("112233"),
-                    "ADMIN",
-                    "123456789",
-                    "Mi dirección"
+                    "Crujientes y dulces, cultivadas en El Manzano Región de O'Higgins.",
+                    1200.0, "Frutas Frescas", 80,
+                    "https://freshmate.cl/cdn/shop/files/manzanas_fuji_en_bowl_de_madera_21_11zon.webp?v=1724716431&width=713"
             );
+
+            crearProducto(repo,
+                    "Naranjas Valencia",
+                    "Jugosas y ricas en vitamina C.",
+                    1000.0, "Frutas Frescas", 70,
+                    "https://lamejornaranjadevalencia.com/UserFiles/images/naranjas-ok.png"
+            );
+
+            crearProducto(repo,
+                    "Plátanos Cavendish",
+                    "Dulces y cremosos, perfectos para deportistas.",
+                    1500.0, "Frutas Frescas", 90,
+                    "https://cdn-redagricola.s3-accelerate.amazonaws.com/2025/09/Cientificos_alemanes_desarrollan_platano_Cavendish_resistente_a_la_oxidacion_y_con_mayor_vida_util.jpg"
+            );
+
+            crearProducto(repo,
+                    "Zanahorias Orgánicas",
+                    "Cultivadas sin pesticidas, ricas en vitamina A.",
+                    900.0, "Verduras Orgánicas", 60,
+                    "https://i5.walmartimages.cl/asr/30b2896e-0f63-4055-9350-47818c12b42d.5b324acce8aa649e62b767a6abf8c7d0.jpeg?null"
+            );
+
+            crearProducto(repo,
+                    "Espinacas Frescas",
+                    "Ricas en hierro, perfectas para batidos.",
+                    1100.0, "Verduras Orgánicas", 50,
+                    "https://www.conasi.eu/blog/wp-content/uploads/2023/07/recetas-con-espinacas-d.jpg"
+            );
+
+            crearProducto(repo,
+                    "Pimientos Tricolores",
+                    "Ideales para salteados y ensaladas.",
+                    1800.0, "Verduras Orgánicas", 0,
+                    "https://www.huleymantel.com/uploads/s1/44/54/25/alba-67.webp"
+            );
+
+            crearProducto(repo,
+                    "Miel Orgánica",
+                    "Endulzante natural sin procesar.",
+                    3500.0, "Productos Orgánicos", 40,
+                    "https://pbs.twimg.com/media/Eb5CV_5WkAAq-20.jpg"
+            );
+
+            crearProducto(repo,
+                    "Quinua Orgánica",
+                    "Quinua de alta calidad rica en proteínas.",
+                    2800.0, "Productos Orgánicos", 30,
+                    "https://pqs.pe/wp-content/uploads/2021/11/quinua.jpg"
+            );
+
+            crearProducto(repo,
+                    "Leche Entera",
+                    "Leche fresca pasteurizada.",
+                    1200.0, "Productos Lácteos", 100,
+                    "https://glycemic-index.net/images/CcjBBjdE4b.webp"
+            );
+
+            crearProducto(repo,
+                    "Mantequilla con Sal",
+                    "Mantequilla cremosa, ideal para pan y cocina.",
+                    2200.0, "Productos Lácteos", 80,
+                    "https://cdnx.jumpseller.com/99578480-7/image/37730304/mantequilla.jpg?1689620808"
+            );
+
+            System.out.println("✅ Productos precargados en la base de datos");
+
+            // 🟡 USUARIOS
+            Usuario admin = new Usuario();
+            admin.setNombre("Kevin Catalan");
+            admin.setCorreo("kevincatalanpinto@gmail.com");
+            admin.setPassword(passwordEncoder.encode("112233"));
+            admin.setRol("ADMIN");
+            admin.setTelefono("123456789");
+            admin.setDireccion("Mi dirección");
             repoUsuario.save(admin);
 
-            Usuario cliente = new Usuario(
-                    null,
-                    "Cliente Ejemplo",
-                    "cliente@correo.cl",
-                    passwordEncoder.encode("abcd"),
-                    "USER",
-                    "987654321",
-                    "Casa cliente"
-            );
+            Usuario cliente = new Usuario();
+            cliente.setNombre("Cliente Ejemplo");
+            cliente.setCorreo("cliente@correo.cl");
+            cliente.setPassword(passwordEncoder.encode("abcd"));
+            cliente.setRol("USER");
+            cliente.setTelefono("987654321");
+            cliente.setDireccion("Casa cliente");
             repoUsuario.save(cliente);
 
             System.out.println("✅ Usuarios precargados correctamente");
         };
+    }
+
+    private void crearProducto(
+            ProductoRepository repo,
+            String nombre,
+            String descripcion,
+            Double precio,
+            String categoria,
+            Integer stock,
+            String imagenUrl
+    ) {
+        Producto p = new Producto();
+        p.setNombre(nombre);
+        p.setDescripcion(descripcion);
+        p.setPrecio(precio);
+        p.setCategoria(categoria);
+        p.setStock(stock);
+        p.setImagenUrl(imagenUrl);
+
+        repo.save(p);
     }
 }
