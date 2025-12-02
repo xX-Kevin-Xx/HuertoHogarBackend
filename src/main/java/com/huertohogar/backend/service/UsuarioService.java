@@ -27,4 +27,11 @@ public class UsuarioService {
         return repo.findAll();
     }
 
+    public Optional<Usuario> findById(Long id) {
+        return repo.findById(id);
+    }
+
+    public void delete(Long id) {
+        repo.deleteById(id);
+    }
 }
