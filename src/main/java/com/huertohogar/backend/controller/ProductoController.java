@@ -36,6 +36,9 @@ public class ProductoController {
 
     @PostMapping
     public ResponseEntity<Producto> create(@RequestBody Producto producto) {
+
+        producto.setId(null);
+
         Producto saved = service.save(producto);
         return ResponseEntity.ok(saved);
     }

@@ -15,13 +15,12 @@ public class JwtService {
     private static final String SECRET_KEY =
             "una_clave_secreta_larga_y_segura_de_al_menos_32_bytes_para_huertohogar_2025";
 
-    private static final long EXPIRATION = 1000 * 60 * 60; // 1 hora
+    private static final long EXPIRATION = 1000 * 60 * 60;
 
     private SecretKey getSigningKey() {
         return Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
     }
 
-    // 🔥 GENERA TOKEN CON CORREO + ROL
     public String generateToken(String correo, String rol) {
         return Jwts.builder()
                 .subject(correo)
